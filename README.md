@@ -1,6 +1,6 @@
 # Software Engineering Notes
 
-[Tech Lead Notes](./tech-lead/README.md)
+[Software Engineering Notes](./notes/README.md)
 
 Some notes from my experiences as tech lead.
 

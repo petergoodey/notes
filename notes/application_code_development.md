@@ -1,5 +1,7 @@
 # Application Code Development
 
+See [Microsoft Framework Design Guidelines](https://learn.microsoft.com/en-us/dotnet/standard/design-guidelines/)
+
 This section is primarily aimed at Junior/Senior Software Engineers
 
 >"Software is a constrained form of literature that communicates concepts from programmer and programmer, which is also executable by machines." *David Whitney*
