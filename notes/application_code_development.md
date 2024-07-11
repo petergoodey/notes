@@ -4,7 +4,7 @@ See [Microsoft Framework Design Guidelines](https://learn.microsoft.com/en-us/do
 
 This section is primarily aimed at Junior/Senior Software Engineers
 
->"Software is a constrained form of literature that communicates concepts from programmer and programmer, which is also executable by machines." *David Whitney*
+> "Software is a constrained form of literature that communicates concepts from programmer and programmer, which is also executable by machines." _David Whitney_
 
 ## Be Mindful and Intentional
 
@@ -16,35 +16,35 @@ Reduce cognitive load on other developers and our later selves.
 
 ## Do Pair Programming
 
-* Forces you to engage with users/PMS sooner
-* Helps to foster a common development culture.
-* Improves software quality.
-* Reduces the need for extensive code reviews.
-* Ensures intra-team knowledge transfer for:
-  * Tools and ways of working.
-  * Development best practices.
-  * Business Knowledge.
+- Forces you to engage with users/PMS sooner
+- Helps to foster a common development culture.
+- Improves software quality.
+- Reduces the need for extensive code reviews.
+- Ensures intra-team knowledge transfer for:
+  - Tools and ways of working.
+  - Development best practices.
+  - Business Knowledge.
 
 ## Use TDD/BDD
 
 Because:
 
-* It forces you to think exactly what you are asking of your code before you actually write the code.
-* You only write just enough code to fulfil the specification.
-* It stops you going down rabbit holes.
-* Well written tests can even be legible to PMs and manual testers.
+- It forces you to think exactly what you are asking of your code before you actually write the code.
+- You only write just enough code to fulfil the specification.
+- It stops you going down rabbit holes.
+- Well written tests can even be legible to PMs and manual testers.
 
 TDD ensures minimalist code. Less code means less chance of buggy code.
 
 Steps:
 
-* **Think**
-* Write a failing test and get it to compile
-  * Use your IDE code generation to generate code
-  * Ensure it compiles.
-  * **Run it to make sure it fails!**
-* Write just enough code to make the test pass.
-* Refactor the code mindfully to conform to SOLID/DRY principles.
+- **Think**
+- Write a failing test and get it to compile
+  - Use your IDE code generation to generate code
+  - Ensure it compiles.
+  - **Run it to make sure it fails!**
+- Write just enough code to make the test pass.
+- Refactor the code mindfully to conform to SOLID/DRY principles.
 
 ## Use Warnings as Errors
 
@@ -60,10 +60,10 @@ Sure you may get the occasional warning that is daft but you can then disable th
 
 Reduce the cognitive load on others reading your code by enforcing a consistent style. At a minimum there should be standards for:
 
-* Indentation.
-* Variable Names.
-* Property Names.
-* Private Member names.
+- Indentation.
+- Variable Names.
+- Property Names.
+- Private Member names.
 
 In .NET you should be using EditorConfig files to enforce this issuing warnings. You need to work with your team to figure out what works and what doesn't and let the EditorConfig file democratically evolve.
 
@@ -77,19 +77,19 @@ This is particularly true of production code.
 
 Third-party libraries introduce:
 
-* Security issues:
-  * Increased attack surfaces and vectors that are not under our control.
-  * Libraries often become abandoned with no security fixes - especially npm.
-* Maintainability:
-  * Libraries can produce complex inter-dependencies - especially npm.
-  * Libraries can make upgrading core framework problematic
+- Security issues:
+  - Increased attack surfaces and vectors that are not under our control.
+  - Libraries often become abandoned with no security fixes - especially npm.
+- Maintainability:
+  - Libraries can produce complex inter-dependencies - especially npm.
+  - Libraries can make upgrading core framework problematic
 
 When deciding to use a third-party library:
 
-* Is it really needed?
-* Can we write the functionality easily ourselves?
-* Is it mature?
-* Is it likely to be maintained?
+- Is it really needed?
+- Can we write the functionality easily ourselves?
+- Is it mature?
+- Is it likely to be maintained?
 
 ## Use Dev Containers where Practical
 
@@ -99,7 +99,7 @@ The obvious solution to leverage dev containers in VSCode.
 
 ## Code Organisation
 
->"...organizing your code by architectural concept is about as meaningful as taking a classic car collection smashing all the cars apart and organizing it by wheels and windshields and boots and seats" ***David Whitney on Clean Architecture***
+> "...organizing your code by architectural concept is about as meaningful as taking a classic car collection smashing all the cars apart and organizing it by wheels and windshields and boots and seats" **_David Whitney on Clean Architecture_**
 
 ### Organise Folders By Feature Not Architectural Responsibility
 
@@ -120,10 +120,10 @@ Models/
 
 But organising by architectural responsibility:
 
-* Decreases cohesion.
-* Adds cognitive load.
-* Adds navigation friction.
-* Obfuscates intent.
+- Decreases cohesion.
+- Adds cognitive load.
+- Adds navigation friction.
+- Obfuscates intent.
 
 Now consider organising by employee feature using vertical slicing:
 
@@ -139,15 +139,15 @@ Feature/
     EmployeeController.cs
     EmployeeModel.cs
     EditEmployeeView.cshtml
-    EmployeeView.cshtml        
+    EmployeeView.cshtml
 ```
 
 This is better because:
 
-* Everything pertaining to Employee is viewable in one folder.
-* Less navigation required.
-* We can see exactly what we are working on by glancing at the filename.
-* We have more cohesion.
+- Everything pertaining to Employee is viewable in one folder.
+- Less navigation required.
+- We can see exactly what we are working on by glancing at the filename.
+- We have more cohesion.
 
 See [Restructuring to a Vertical Slice Architecture](https://www.youtube.com/watch?v=cVVMbuKmNes)
 
@@ -155,10 +155,10 @@ See [Restructuring to a Vertical Slice Architecture](https://www.youtube.com/wat
 
 Try doing three projects:
 
-* .Core with the business logic
-* .Api, .Web or .Console for the code entrypoint.
-* Test projects
-* Any IaaC (e.g. Terraform, Helm Charts CI/CD YAML)
+- .Core with the business logic
+- .Api, .Web or .Console for the code entrypoint.
+- Test projects
+- Any IaaC (e.g. Terraform, Helm Charts CI/CD YAML)
 
 ## Query Data Efficiently
 
@@ -166,7 +166,7 @@ The use of repository pattern tools like EF Core frequently result in more data 
 
 **Only do this in development...**
 
-If you want to see what SQL queries is actually making you can set the logging level as follows in your ``appsetting.json``:
+If you want to see what SQL queries is actually making you can set the logging level as follows in your `appsetting.json`:
 
 ```json
 {
@@ -185,37 +185,37 @@ Microsoft have an [Efficient Querying](https://learn.microsoft.com/en-us/ef/core
 
 This applies to .NET microservices.
 
-* Use Serilog correctly.
-* Use ILogger instead of static instance.
-* Use structure logging.
-* Only log what is needed.
-* DO NOT USE string interpolation or concatenation
-  * Large strings can crash the service and you won't know why because there's no log!
-* Use enrichment to ensure all necessary information is present:
-  * E.g. User ID, Correlation ID, Request URL, App Version
-* Consider project/platform-wide library to enforce best practices.
-* Ensure that you are logging at the correct level:
-  * (Debug, Information, Warning, Error, Critical).
-  * Prefer Debug when possible
-* Only log developer focused technical issues.
-  * I have seen testers/PMs requesting business logic proof.
-* Establish a log retention policy.
-* Do not use Serilog for contractual/legal audit records - it is not guaranteed.
-  * I have seen instances where Serilog fails silently.
+- Use Serilog correctly.
+- Use ILogger instead of static instance.
+- Use structure logging.
+- Only log what is needed.
+- DO NOT USE string interpolation or concatenation
+  - Large strings can crash the service and you won't know why because there's no log!
+- Use enrichment to ensure all necessary information is present:
+  - E.g. User ID, Correlation ID, Request URL, App Version
+- Consider project/platform-wide library to enforce best practices.
+- Ensure that you are logging at the correct level:
+  - (Debug, Information, Warning, Error, Critical).
+  - Prefer Debug when possible
+- Only log developer focused technical issues.
+  - I have seen testers/PMs requesting business logic proof.
+- Establish a log retention policy.
+- Do not use Serilog for contractual/legal audit records - it is not guaranteed.
+  - I have seen instances where Serilog fails silently.
 
 ## Metrics
 
 Two types:
 
-* Application (Promethus - CPU, Memory)
-* Business - How long a user stayed on a page.
-* Metrics retention policy
+- Application (Promethus - CPU, Memory)
+- Business - How long a user stayed on a page.
+- Metrics retention policy
 
 ## Security
 
-* Add `[Authorize]` everywhere!
-* Forget once and you're wide open.
-* Add a FallbackPolicy:
+- Add `[Authorize]` everywhere!
+- Forget once and you're wide open.
+- Add a FallbackPolicy:
 
 ```csharp
 builder.Services.AddAuthorizationBuilder()
@@ -228,16 +228,16 @@ builder.Services.AddAuthorizationBuilder()
 
 DO NOT use Data Annotations:
 
-* SRP violation (Model and Validation in one class)
-* Hard to test correctly
+- SRP violation (Model and Validation in one class)
+- Hard to test correctly
 
 Instead use FluentValidation:
 
-* Business rules are easier to read
-* Easy to show to a stakeholder
-* Easy to test
-* Does not violate SRP
-* Integrates with ModelSTate.IsValid
+- Business rules are easier to read
+- Easy to show to a stakeholder
+- Easy to test
+- Does not violate SRP
+- Integrates with ModelSTate.IsValid
 
 ## Remove Server Header
 
@@ -249,10 +249,10 @@ builder.WebHost.UseKestrel(options => options.AddServerHeader = false);
 
 ## Avoid using IOptions
 
-* Violates Dependency Inversion Principle
-* Hard to test
-* Hard to verify configuration
-* Harder to debug
+- Violates Dependency Inversion Principle
+- Hard to test
+- Hard to verify configuration
+- Harder to debug
 
 Instead map a class or record to the section and perform any validation as required e.g.:
 
@@ -261,7 +261,7 @@ IConfiguration configuration = new ConfigurationBuilder()
   .AddJsonFile("appsettings.json")
   .Build();
 
-MailSettings mailSettings = configuration.GetSection("MailSettings").Get<MailSettings>() 
+MailSettings mailSettings = configuration.GetSection("MailSettings").Get<MailSettings>()
   ?? throw new Exception("MailSettings config not found.");
 
 var mailSettingsValidator = new MailSettingsValidator();
@@ -293,7 +293,7 @@ public sealed class MailSettingsValidator : AbstractValidator<MailSettings> {
 }
 ```
 
-## Make Classes and Records Sealed 
+## Make Classes and Records Sealed
 
 This ensures we maintain the highest performance.
 
@@ -301,7 +301,7 @@ This ensures we maintain the highest performance.
 
 ## Add Version API endpoint with Build Details
 
-Add a version file on something on and endpoint like ``api/version`` that reads a file in the format:
+Add a version file on something on and endpoint like `api/version` that reads a file in the format:
 
 ```txt
 <Date><BuildNumber><ShortGitSha>
@@ -319,17 +319,17 @@ Early return statements for error paths.
 
 Warning signs:
 
-* Methods > 20 lines
-* Classes > 200 lines
+- Methods > 20 lines
+- Classes > 200 lines
 
 Don't use regions - add new classes!
 
 ## HTTP Security Headers
 
-* Tells a browser what extra rules to enforce
-* Protects against MITM, clickjacking, cross-site scripting, and more
-* Be careful!
-* [NetEscapades.AspNetCore.SecurityHeaders](https://github.com/andrewlock/NetEscapades.AspNetCore.SecurityHeaders)
+- Tells a browser what extra rules to enforce
+- Protects against MITM, clickjacking, cross-site scripting, and more
+- Be careful!
+- [NetEscapades.AspNetCore.SecurityHeaders](https://github.com/andrewlock/NetEscapades.AspNetCore.SecurityHeaders)
 
 [Video](https://www.youtube.com/watch?v=7MWXTXjtl8s)
 
@@ -351,15 +351,15 @@ builder.Host.UseDefaultServiceProvider(config => {
 
 ### Tooling
 
-* Have a regression test suite.
-  * Make changes quickly and confidently.
-  * Exposes holes in your architecture.
-* Use XUnit or NUnit (NOT MSTest)
-* xUnit is used by the APS.NET team
-* Use FluentAssertions
-  * More natural tha Assert.Equal
-  * More domain like language
-  * Can be read by business.
+- Have a regression test suite.
+  - Make changes quickly and confidently.
+  - Exposes holes in your architecture.
+- Use XUnit or NUnit (NOT MSTest)
+- xUnit is used by the APS.NET team
+- Use FluentAssertions
+  - More natural tha Assert.Equal
+  - More domain like language
+  - Can be read by business.
 
 ```csharp
   // Fluent Assertions
@@ -371,27 +371,27 @@ Easily extensible for something akin to Domain Specific Language
 
 ### Test Construction
 
-* Name the tests consistently
-  * Stick to camel case or underscores
-* Only add the data you're testing (Checkov's Gun)
-* If you are performing too much setup in the test you probably want to move that to the constructor:
-  * This reduces the need to refactor every test if dependencies change.
-* If you have too much setup and/or logic in your constructor you may need to create a new test class.
-* If you tests are using too many mocks:
-  * That part of your application may be too tightly coupled
-  * You probably want to consider refactoring.
+- Name the tests consistently
+  - Stick to camel case or underscores
+- Only add the data you're testing (Checkov's Gun)
+- If you are performing too much setup in the test you probably want to move that to the constructor:
+  - This reduces the need to refactor every test if dependencies change.
+- If you have too much setup and/or logic in your constructor you may need to create a new test class.
+- If you tests are using too many mocks:
+  - That part of your application may be too tightly coupled
+  - You probably want to consider refactoring.
 
 ### Integration Testing .NET APIs
 
-* For API integration tests use a WebApplicationFactory based fixture:
-  * Use the Program.cs Or Startup.cs so you are spinning up the entire service.
-  * Call the actual endpoint.
-  * Only mock the external service API responses.
+- For API integration tests use a WebApplicationFactory based fixture:
+  - Use the Program.cs Or Startup.cs so you are spinning up the entire service.
+  - Call the actual endpoint.
+  - Only mock the external service API responses.
 
 Example replacing:
 
-* 
-* The DBService with a temporary SQLite database
+-
+- The DBService with a temporary SQLite database
 
 ```csharp
 
@@ -429,7 +429,7 @@ public class CustomWebApplicationFactory<TProgram>
                 options.UseSqlite(connection);
             });
 
-            
+
             var myExternalAPIService = services.SingleOrDefault(
                 d => d.ServiceType ==
                     typeof(myExternalAPIService));
@@ -449,10 +449,10 @@ public class CustomWebApplicationFactory<TProgram>
 
 ## Central Package Management
 
-* Enables the entire solution to use the same versions.
-* Use [``Directory.Packages.props``](https://devblogs.microsoft.com/nuget/introducing-central-package-management/) in the root of your solution
-* Omit the version attribute to force latest package
-* In some instances you may need to use the ``VersionOverride``
+- Enables the entire solution to use the same versions.
+- Use [`Directory.Packages.props`](https://devblogs.microsoft.com/nuget/introducing-central-package-management/) in the root of your solution
+- Omit the version attribute to force latest package
+- In some instances you may need to use the `VersionOverride`
 
 ```xml
 <Project Sdk="Microsoft.NET.Sdk">
@@ -470,9 +470,9 @@ public class CustomWebApplicationFactory<TProgram>
 
 Use confident Green:
 
-* When the build pipeline goes green you should be confident that it can go into production.
-* If you are not write automated tests to ensure that you have that confidence!
-* Don't use manual tests.
+- When the build pipeline goes green you should be confident that it can go into production.
+- If you are not write automated tests to ensure that you have that confidence!
+- Don't use manual tests.
 
 ## Feature Toggles
 
@@ -493,3 +493,56 @@ Deploy frequently - every day!
 Use this to track requests across a distributes system. Ensure it is logged.
 
 Add code to your LogEnricher to retrieve this id and log it appropriately.
+
+## Use Named or Typed HttpClientFactory HttpClient instances to avoid Resource/Port exhaustion
+
+E.g. we are coding a service that calls a service called "serviceb":
+
+Program.cs
+
+```csharp
+
+public sealed class GitHubSettings
+{
+    public const string ConfigurationSection = "GitHub";
+
+    [Required]
+    public string AccessToken { get; init; } = string.Empty;
+
+    [Required]
+    public string UserAgent { get; init; } = string.Empty;
+}
+
+// ...
+
+builder.Services.AddHttpClient<GitHubService>((serviceProvider, httpClient) =>
+{
+    var gitHubSettings = serviceProvider.GetRequiredService<IOptions<GitHubSettings>>().Value;
+
+    httpClient.DefaultRequestHeaders.Add("Authorization", gitHubSettings.AccessToken);
+    httpClient.DefaultRequestHeaders.Add("User-Agent", gitHubSettings.UserAgent);
+    httpClient.BaseAddress = new Uri("https://api.github.com");
+})
+.ConfigurePrimaryHttpMessageHandler(() =>
+{
+    return new SocketsHttpHandler
+    {
+        PooledConnectionLifetime = TimeSpan.FromMinutes(5)
+    };
+})
+.SetHandlerLifetime(Timeout.InfiniteTimeSpan);
+
+ // ...
+
+app.MapGet("users/v2/{userId}", async (
+  string userId,
+  IHttpClientFactory factory
+  // ...
+ ) =>
+{
+  return await _client.GetFromJsonAsync<GitHubUser>($"users/{username}");
+);
+
+```
+
+You should fo course consider wrapping this in a service.
