@@ -13,6 +13,10 @@ All things pertinent to application code - e.g. .NET Core microservice or a Reac
 * [API Design](api_design.md)
 * [Architectural Considerations](architectural_considerations.md)
 
+## Azure Architecture
+
+[Azure Data Factory](./azure_data_factory.md)
+
 ## CI/CD
 
 * [Deployment Pipelines](deployment-pipelines.md)
